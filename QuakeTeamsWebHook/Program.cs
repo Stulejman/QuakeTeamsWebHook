@@ -23,7 +23,7 @@ namespace QuakeTeamsWebHook
             logger.Info("Starting QuakeTeamsWebHook");
             var logPath = ConfigurationManager.AppSettings["logPath"];
             webHookUrl = ConfigurationManager.AppSettings["webHookUrl"];
-            MonitorTailOfFile(logPath);
+            MonitorTailOfFile(Path.Combine(Environment.ExpandEnvironmentVariables("%APPDATA%"),logPath));
         }
 
         private static string GetJsonToSend(string scoreJson, string endReason, string mapName) {
